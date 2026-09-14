@@ -9,7 +9,7 @@ return {
           syntax = 'markdown',
           ext = 'md',
           path_html = vim.fn.expand '~' .. '/Library/CloudStorage/OneDrive-ZHAW/html',
-          custom_wiki2html = vim.fn.expand '~' .. '/dotfiles/vim/convert.py',
+          custom_wiki2html = vim.fn.stdpath 'config' .. '/scripts/convert.py',
           nested_syntaxes = { ['python'] = 'python', ['c++'] = 'cpp' },
         },
       }
@@ -19,8 +19,8 @@ return {
       vim.api.nvim_create_autocmd('BufNewFile', {
         pattern = { '*/diary/*.md' }, -- More flexible pattern
         command = 'silent 0r !'
-          .. vim.fn.expand '~'
-          .. "/dotfiles/vim/generate-vimwiki-diary-template.py '%' "
+          .. vim.fn.stdpath 'config'
+          .. "/scripts/generate-vimwiki-diary-template.py '%' "
           .. vim.fn.expand '~'
           .. '/Library/CloudStorage/OneDrive-ZHAW',
       })
